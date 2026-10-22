@@ -18,15 +18,14 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv .venv
-                    .venv/bin/python -m pip install --upgrade pip
-                    .venv/bin/python -m pip install -r requirements.txt 
-                   '''
+                    .venv/bin/pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'PYTHONPATH=. .venv/bin/pytest -v'
+                sh '.venv/bin/pytest -v'
             }
         }
 
